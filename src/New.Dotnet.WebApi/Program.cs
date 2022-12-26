@@ -1,11 +1,11 @@
-using New.Dotnet.MessageBus.Options;
 using New.Dotnet.WebApi.Abstractions;
+using New.Dotnet.WebApi.Options;
 using New.Dotnet.WebApi.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.Configure<KafkaOptions>(builder.Configuration.GetSection("Kafka"));
-builder.Services.AddTransient<IWeatherForecastsService, WeatherForecastsService>();
+builder.Services.AddTransient<IWeatherForecastsService, KafkaWeatherForecastsService>();
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

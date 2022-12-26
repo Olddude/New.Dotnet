@@ -4,5 +4,5 @@ namespace New.Dotnet.WebApi.Abstractions;
 
 public interface IWeatherForecastsService
 {
-    Task<GetWeatherForecastsResponse> GetAsync(GetWeatherForecastsRequest request, CancellationToken cancellationToken);
+    Task<GetWeatherForecastsResponse?> GetAsync(GetWeatherForecastsRequest request, CancellationToken cancellationToken);
 }

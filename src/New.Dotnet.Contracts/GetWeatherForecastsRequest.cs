@@ -1,7 +1,7 @@
 namespace New.Dotnet.Contracts;
 
-public class GetWeatherForecastsRequest
-{
-    public int Page { get; set; }
-    public int Take { get; set; }
-}
+public record GetWeatherForecastsRequest
+(
+    int Page,
+    int Take
+);

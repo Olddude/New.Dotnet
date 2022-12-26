@@ -8,18 +8,18 @@ using New.Dotnet.Service.Options;
 
 namespace New.Dotnet.Service.Services;
 
-public class MessageBrokerService : BackgroundService
+public class KafkaMessageBrokerService : BackgroundService
 {
-    private readonly ILogger<MessageBrokerService> _logger;
+    private readonly ILogger<KafkaMessageBrokerService> _logger;
     private readonly IOptions<KafkaOptions> _options;
     private readonly IDomainEventRepository _domainEventRepository;
     private readonly IWeatherForecastRepository _weatherForecastRepository;
     private readonly IConsumer<string, string> _consumer;
     private readonly IProducer<string, string> _producer;
 
-    public MessageBrokerService
+    public KafkaMessageBrokerService
     (
-        ILogger<MessageBrokerService> logger,
+        ILogger<KafkaMessageBrokerService> logger,
         IOptions<KafkaOptions> options,
         IDomainEventRepository domainEventRepository,
         IWeatherForecastRepository weatherForecastRepository
@@ -46,10 +46,7 @@ public class MessageBrokerService : BackgroundService
     
     protected override async Task ExecuteAsync(CancellationToken cancellationToken)
     {
-        await Task.CompletedTask;
         _logger.LogInformation("start consuming events");
-        // var dummyWeatherForecasts = GetDummyWeatherForecasts();
-        // await _weatherForecastRepository.CreateWeatherForecastsAsync(dummyWeatherForecasts);
         _consumer.Subscribe(_options.Value.RequestsTopic);
         while (!cancellationToken.IsCancellationRequested)
         {
@@ -57,22 +54,13 @@ public class MessageBrokerService : BackgroundService
             var requestKey = consumeResult.Message.Key;
             var requestValue = consumeResult.Message.Value;
             var requestContract = JsonSerializer.Deserialize<GetWeatherForecastsRequest>(requestValue);
+            if (requestContract == null) continue;
             var weatherForecasts = await _weatherForecastRepository.GetWeatherForecastsAsync(requestContract.Page, requestContract.Take);
-            var responseContract = new GetWeatherForecastsResponse
+            var responseContract = new GetWeatherForecastsResponse(weatherForecasts.Select(_ =>
             {
-                Values = weatherForecasts.Select(_ =>
-                {
-                    var dto = new WeatherForecastDto
-                    {
-                        Id = _.Id,
-                        Message = _.Message,
-                        Date = _.Date,
-                        Temperature = _.Temperature,
-                        CreatedAt = _.CreatedAt
-                    };
-                    return dto;
-                })
-            };
+                var dto = new WeatherForecastDto(_.Id, _.Date, _.Temperature, _.Message, _.CreatedAt);
+                return dto;
+            }));
             var responseMessage = new Message<string, string>
             {
                 Key = requestKey,
@@ -84,7 +72,14 @@ public class MessageBrokerService : BackgroundService
         }
     }
 
-    private IEnumerable<WeatherForecast> GetDummyWeatherForecasts()
+    public override void Dispose()
+    {
+        base.Dispose();
+        _consumer.Dispose();
+        _producer.Dispose();
+    }
+    
+    private static IEnumerable<WeatherForecast> GetDummyWeatherForecasts()
     {
         var messages = new[]
         {
@@ -97,12 +92,5 @@ public class MessageBrokerService : BackgroundService
             var messageIndex = new Random().Next(0, messages.Length - 1);
             return new WeatherForecast(date, temp, messages[messageIndex]);
         });
-    }
-
-    public override void Dispose()
-    {
-        base.Dispose();
-        _consumer.Dispose();
-        _producer.Dispose();
     }
 }

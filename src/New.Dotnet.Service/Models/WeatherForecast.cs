@@ -4,10 +4,6 @@ namespace New.Dotnet.Service.Models;
 
 public class WeatherForecast
 {
-    public WeatherForecast()
-    {
-    }
-
     public WeatherForecast(DateTime date, int temperature, string message)
     {
         Id = Guid.NewGuid();

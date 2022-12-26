@@ -5,10 +5,6 @@ namespace New.Dotnet.Service.Models;
 
 public class DomainEvent
 {
-    public DomainEvent()
-    {
-    }
-
     public DomainEvent(string type, string payload, string? errors = null)
     {
         Id = Guid.NewGuid();
