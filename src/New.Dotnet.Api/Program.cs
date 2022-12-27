@@ -1,6 +1,6 @@
+using New.Dotnet.Api.Abstractions;
+using New.Dotnet.Api.Services;
 using New.Dotnet.Messaging.Kafka.Options;
-using New.Dotnet.Services.Abstractions;
-using New.Dotnet.Services.Features.GetWeatherForecasts;
 
 var builder = WebApplication.CreateBuilder(args);
 

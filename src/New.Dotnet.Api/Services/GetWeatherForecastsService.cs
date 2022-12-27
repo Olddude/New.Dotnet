@@ -1,11 +1,11 @@
 using System.Text.Json;
 using Confluent.Kafka;
 using Microsoft.Extensions.Options;
+using New.Dotnet.Api.Abstractions;
 using New.Dotnet.Contracts.Features.GetWeatherForecasts;
 using New.Dotnet.Messaging.Kafka.Options;
-using New.Dotnet.Services.Abstractions;
 
-namespace New.Dotnet.Services.Features.GetWeatherForecasts;
+namespace New.Dotnet.Api.Services;
 
 public class GetWeatherForecastsService : IGetWeatherForecastsService
 {

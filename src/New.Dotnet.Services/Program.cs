@@ -1,12 +1,12 @@
 using Microsoft.EntityFrameworkCore;
+using New.Dotnet.Messaging.Kafka.Abstractions;
+using New.Dotnet.Messaging.Kafka.Handlers;
 using New.Dotnet.Messaging.Kafka.Options;
 using New.Dotnet.Messaging.RabbitMq.Options;
 using New.Dotnet.Persistence.Abstractions;
 using New.Dotnet.Persistence.Context;
 using New.Dotnet.Persistence.Repositories;
-using New.Dotnet.Services.Abstractions;
 using New.Dotnet.Services.Features.GetWeatherForecasts;
-using New.Dotnet.Services.Handlers;
 using New.Dotnet.Services.Mappers;
 
 var builder = WebApplication.CreateBuilder(args);

@@ -1,7 +1,7 @@
 using Confluent.Kafka;
 using Microsoft.Extensions.Options;
+using New.Dotnet.Messaging.Kafka.Abstractions;
 using New.Dotnet.Messaging.Kafka.Options;
-using New.Dotnet.Services.Abstractions;
 
 namespace New.Dotnet.Services.Features.GetWeatherForecasts;
 

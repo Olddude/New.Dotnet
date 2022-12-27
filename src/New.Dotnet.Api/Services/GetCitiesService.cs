@@ -1,7 +1,7 @@
+using New.Dotnet.Api.Abstractions;
 using New.Dotnet.Contracts.Features.GetCities;
-using New.Dotnet.Services.Abstractions;
 
-namespace New.Dotnet.Services.Features.GetCities;
+namespace New.Dotnet.Api.Services;
 
 public class GetCitiesService : IGetCitiesService
 {

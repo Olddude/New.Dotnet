@@ -2,10 +2,10 @@ using System.Text.Json;
 using AutoMapper;
 using Confluent.Kafka;
 using New.Dotnet.Contracts.Features.GetWeatherForecasts;
+using New.Dotnet.Messaging.Kafka.Abstractions;
 using New.Dotnet.Persistence.Abstractions;
-using New.Dotnet.Services.Abstractions;
 
-namespace New.Dotnet.Services.Handlers;
+namespace New.Dotnet.Messaging.Kafka.Handlers;
 
 public class GetWeatherForecastsRequestMessageHandler : IGetWeatherForecastsMessageHandler
 {

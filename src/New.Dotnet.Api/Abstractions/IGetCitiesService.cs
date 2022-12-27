@@ -1,6 +1,6 @@
 using New.Dotnet.Contracts.Features.GetCities;
 
-namespace New.Dotnet.Services.Abstractions;
+namespace New.Dotnet.Api.Abstractions;
 
 public interface IGetCitiesService
 {

@@ -12,7 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\New.Dotnet.Services\New.Dotnet.Services.csproj" />
+    <ProjectReference Include="..\New.Dotnet.Messaging\New.Dotnet.Messaging.csproj" />
   </ItemGroup>
 
 </Project>
