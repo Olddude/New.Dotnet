@@ -5,7 +5,7 @@ using New.Dotnet.Persistence.Abstractions;
 
 namespace New.Dotnet.Services.Features.GetWeatherForecasts;
 
-public class GetWeatherForecastsMessageHandler
+public class GetWeatherForecastsMessageHandler : IGetWeatherForecastsMessageHandler
 {
     private readonly IWeatherForecastRepository _repository;
 

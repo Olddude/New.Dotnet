@@ -15,6 +15,7 @@ builder.Services.AddDbContext<DatabaseContext>(options =>
 }, ServiceLifetime.Singleton);
 builder.Services.AddSingleton<IDomainEventRepository, DomainEventRepository>();
 builder.Services.AddSingleton<IWeatherForecastRepository, WeatherForecastRepository>();
+builder.Services.AddSingleton<IGetWeatherForecastsMessageHandler, GetWeatherForecastsMessageHandler>();
 builder.Services.AddHostedService<GetWeatherForecastsBackgroundService>();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

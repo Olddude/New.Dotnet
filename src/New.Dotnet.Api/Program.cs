@@ -4,7 +4,7 @@ using New.Dotnet.Services.Features.GetWeatherForecasts;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.Configure<KafkaOptions>(builder.Configuration.GetSection("Kafka"));
-builder.Services.AddTransient<IGetWeatherForecastsService, GetWeatherForecastsService>();
+builder.Services.AddSingleton<IGetWeatherForecastsService, GetWeatherForecastsService>();
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
