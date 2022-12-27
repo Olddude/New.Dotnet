@@ -1,6 +1,6 @@
 using MassTransit;
 using Microsoft.Extensions.Options;
-using New.Dotnet.Messaging.Options;
+using New.Dotnet.Messaging.RabbitMq.Options;
 
 namespace New.Dotnet.Services.Features.GetCities;
 

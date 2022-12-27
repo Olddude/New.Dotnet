@@ -1,7 +1,7 @@
 using System.Text.Json;
 using AutoMapper;
 using Confluent.Kafka;
-using New.Dotnet.Messaging.Contracts;
+using New.Dotnet.Contracts.Features.GetWeatherForecasts;
 using New.Dotnet.Persistence.Abstractions;
 using New.Dotnet.Services.Abstractions;
 

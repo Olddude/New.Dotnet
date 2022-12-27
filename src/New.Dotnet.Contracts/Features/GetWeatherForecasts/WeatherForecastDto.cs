@@ -1,4 +1,4 @@
-namespace New.Dotnet.Messaging.Contracts;
+namespace New.Dotnet.Contracts.Features.GetWeatherForecasts;
 
 public record WeatherForecastDto
 {

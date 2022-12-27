@@ -1,5 +1,5 @@
 using AutoMapper;
-using New.Dotnet.Messaging.Contracts;
+using New.Dotnet.Contracts.Features.GetWeatherForecasts;
 using New.Dotnet.Persistence.Models;
 
 namespace New.Dotnet.Services.Mappers;

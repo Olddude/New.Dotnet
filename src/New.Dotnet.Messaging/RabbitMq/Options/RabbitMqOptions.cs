@@ -1,4 +1,4 @@
-namespace New.Dotnet.Messaging.Options;
+namespace New.Dotnet.Messaging.RabbitMq.Options;
 
 public record RabbitMqOptions
 {

@@ -1,4 +1,4 @@
-using New.Dotnet.Messaging.Features.GetCities;
+using New.Dotnet.Contracts.Features.GetCities;
 using New.Dotnet.Services.Abstractions;
 
 namespace New.Dotnet.Services.Features.GetCities;

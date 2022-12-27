@@ -1,4 +1,4 @@
-namespace New.Dotnet.Messaging.Features.GetCities;
+namespace New.Dotnet.Contracts.Features.GetCities;
 
 public record CityDto
 {

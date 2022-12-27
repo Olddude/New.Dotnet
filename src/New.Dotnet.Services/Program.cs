@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
-using New.Dotnet.Messaging.Options;
+using New.Dotnet.Messaging.Kafka.Options;
+using New.Dotnet.Messaging.RabbitMq.Options;
 using New.Dotnet.Persistence.Abstractions;
 using New.Dotnet.Persistence.Context;
 using New.Dotnet.Persistence.Repositories;

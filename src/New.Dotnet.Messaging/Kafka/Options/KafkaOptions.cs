@@ -1,4 +1,4 @@
-namespace New.Dotnet.Messaging.Options;
+namespace New.Dotnet.Messaging.Kafka.Options;
 
 public record KafkaOptions
 {

@@ -1,4 +1,4 @@
-using New.Dotnet.Messaging.Contracts;
+using New.Dotnet.Contracts.Features.GetWeatherForecasts;
 
 namespace New.Dotnet.Services.Abstractions;
 

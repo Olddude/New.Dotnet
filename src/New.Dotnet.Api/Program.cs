@@ -1,4 +1,4 @@
-using New.Dotnet.Messaging.Options;
+using New.Dotnet.Messaging.Kafka.Options;
 using New.Dotnet.Services.Abstractions;
 using New.Dotnet.Services.Features.GetWeatherForecasts;
 
