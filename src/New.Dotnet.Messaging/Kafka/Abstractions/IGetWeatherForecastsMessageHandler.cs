@@ -4,5 +4,5 @@ namespace New.Dotnet.Messaging.Kafka.Abstractions;
 
 public interface IGetWeatherForecastsMessageHandler
 {
-    Task<Message<string, string>> HandleAsync(Message<string, string> requestMessage);
+    Task<Message<string, string>> HandleAsync(Message<string, string> requestMessage, CancellationToken cancellationToken);
 }

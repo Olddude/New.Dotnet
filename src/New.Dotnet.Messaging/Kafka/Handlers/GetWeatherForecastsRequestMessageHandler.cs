@@ -22,7 +22,7 @@ public class GetWeatherForecastsRequestMessageHandler : IGetWeatherForecastsMess
         _mapper = mapper;
     }
     
-    public async Task<Message<string, string>> HandleAsync(Message<string, string> requestMessage)
+    public async Task<Message<string, string>> HandleAsync(Message<string, string> requestMessage, CancellationToken cancellationToken)
     {
         var requestContract = JsonSerializer.Deserialize<GetWeatherForecastsRequest>(requestMessage.Value);
         if (requestContract is null)
@@ -33,7 +33,7 @@ public class GetWeatherForecastsRequestMessageHandler : IGetWeatherForecastsMess
                 Value = JsonSerializer.Serialize(new ApplicationException("request contract is null"))
             };
         }
-        var weatherForecasts = await _repository.GetWeatherForecastsAsync(requestContract.Page, requestContract.Take);
+        var weatherForecasts = await _repository.GetWeatherForecastsAsync(requestContract.Page, requestContract.Take, cancellationToken);
         var responseContract = new GetWeatherForecastsResponse
         {
             Values = weatherForecasts.Select(_ => new WeatherForecastDto

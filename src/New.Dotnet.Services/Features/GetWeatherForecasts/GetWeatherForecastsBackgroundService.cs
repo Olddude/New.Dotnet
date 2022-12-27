@@ -42,7 +42,7 @@ public class GetWeatherForecastsBackgroundService : BackgroundService
         {
             var consumeResult = consumer.Consume(cancellationToken);
             var requestMessage = consumeResult.Message;
-            var responseMessage = await _handler.HandleAsync(requestMessage);
+            var responseMessage = await _handler.HandleAsync(requestMessage, cancellationToken);
             var producerConfig = new ProducerConfig
             {
                 BootstrapServers = _options.Value.BootstrapServers

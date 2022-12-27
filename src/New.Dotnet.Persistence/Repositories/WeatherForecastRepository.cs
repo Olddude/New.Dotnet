@@ -21,15 +21,22 @@ public class WeatherForecastRepository : IWeatherForecastRepository
         _dbContext = dbContext;
     }
 
-    public async Task<IEnumerable<WeatherForecast>> GetWeatherForecastsAsync(int skip, int take)
+    public async Task<IEnumerable<WeatherForecast>> GetWeatherForecastsAsync(int skip, int take, CancellationToken cancellationToken)
     {
-        var results = await _dbContext.WeatherForecasts.Skip(skip).Take(take).ToListAsync();
-        return results;
+        return await _dbContext.WeatherForecasts.Skip(skip).Take(take).ToListAsync(cancellationToken);
     }
 
-    public async Task CreateWeatherForecastsAsync(IEnumerable<WeatherForecast> weatherForecasts)
+    public async Task CreateWeatherForecastsAsync(IEnumerable<WeatherForecast> weatherForecasts, CancellationToken cancellationToken)
     {
-        await _dbContext.WeatherForecasts.AddRangeAsync(weatherForecasts);
-        await _dbContext.SaveChangesAsync();
+        try
+        {
+            await _dbContext.WeatherForecasts.AddRangeAsync(weatherForecasts, cancellationToken);
+            var result = await _dbContext.SaveChangesAsync(cancellationToken);
+            _logger.LogInformation($"{result}");
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "could not create weather forecasts...");
+        }
     }
 }
