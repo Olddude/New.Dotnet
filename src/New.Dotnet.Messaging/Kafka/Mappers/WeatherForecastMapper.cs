@@ -2,9 +2,9 @@ using AutoMapper;
 using New.Dotnet.Contracts.Features.GetWeatherForecasts;
 using New.Dotnet.Persistence.Models;
 
-namespace New.Dotnet.Services.Mappers;
+namespace New.Dotnet.Messaging.Kafka.Mappers;
 
-internal class WeatherForecastMapper : Profile
+public class WeatherForecastMapper : Profile
 {
     public WeatherForecastMapper()
     {
