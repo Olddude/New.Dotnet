@@ -4,6 +4,7 @@ using Confluent.Kafka;
 using New.Dotnet.Contracts.Features.GetWeatherForecasts;
 using New.Dotnet.Messaging.Kafka.Abstractions;
 using New.Dotnet.Persistence.Abstractions;
+using New.Dotnet.Persistence.Internal;
 
 namespace New.Dotnet.Messaging.Kafka.Handlers;
 
@@ -24,6 +25,8 @@ public class GetWeatherForecastsRequestMessageHandler : IGetWeatherForecastsMess
     
     public async Task<Message<string, string>> HandleAsync(Message<string, string> requestMessage, CancellationToken cancellationToken)
     {
+        // var data = DummyDataService.GetWeatherForecasts();
+        // await _repository.CreateWeatherForecastsAsync(data, cancellationToken);
         var requestContract = JsonSerializer.Deserialize<GetWeatherForecastsRequest>(requestMessage.Value);
         if (requestContract is null)
         {

@@ -8,12 +8,12 @@ namespace New.Dotnet.Persistence.Repositories;
 
 public class WeatherForecastRepository : IWeatherForecastRepository
 {
-    private readonly ILogger<DomainEventRepository> _logger;
+    private readonly ILogger<WeatherForecastRepository> _logger;
     private readonly DatabaseContext _dbContext;
     
     public WeatherForecastRepository
     (
-        ILogger<DomainEventRepository> logger,
+        ILogger<WeatherForecastRepository> logger,
         DatabaseContext dbContext
     )
     {
