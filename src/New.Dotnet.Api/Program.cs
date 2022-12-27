@@ -1,4 +1,5 @@
 using New.Dotnet.Messaging.Options;
+using New.Dotnet.Services.Abstractions;
 using New.Dotnet.Services.Features.GetWeatherForecasts;
 
 var builder = WebApplication.CreateBuilder(args);

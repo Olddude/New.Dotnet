@@ -1,6 +1,6 @@
 using Confluent.Kafka;
 
-namespace New.Dotnet.Services.Features.GetWeatherForecasts;
+namespace New.Dotnet.Services.Abstractions;
 
 public interface IGetWeatherForecastsMessageHandler
 {

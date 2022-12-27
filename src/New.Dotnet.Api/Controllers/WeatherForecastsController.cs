@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using New.Dotnet.Messaging.Contracts;
-using New.Dotnet.Services.Features.GetWeatherForecasts;
+using New.Dotnet.Services.Abstractions;
 
 namespace New.Dotnet.Api.Controllers;
 

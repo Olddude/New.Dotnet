@@ -1,17 +1,25 @@
 using System.Text.Json;
+using AutoMapper;
 using Confluent.Kafka;
 using New.Dotnet.Messaging.Contracts;
 using New.Dotnet.Persistence.Abstractions;
+using New.Dotnet.Services.Abstractions;
 
-namespace New.Dotnet.Services.Features.GetWeatherForecasts;
+namespace New.Dotnet.Services.Handlers;
 
-public class GetWeatherForecastsMessageHandler : IGetWeatherForecastsMessageHandler
+public class GetWeatherForecastsRequestMessageHandler : IGetWeatherForecastsMessageHandler
 {
     private readonly IWeatherForecastRepository _repository;
+    private readonly IMapper _mapper;
 
-    public GetWeatherForecastsMessageHandler(IWeatherForecastRepository repository)
+    public GetWeatherForecastsRequestMessageHandler
+    (
+        IWeatherForecastRepository repository,
+        IMapper mapper
+    )
     {
         _repository = repository;
+        _mapper = mapper;
     }
     
     public async Task<Message<string, string>> HandleAsync(Message<string, string> requestMessage)

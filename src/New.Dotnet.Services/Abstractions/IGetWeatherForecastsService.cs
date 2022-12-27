@@ -1,6 +1,6 @@
 using New.Dotnet.Messaging.Contracts;
 
-namespace New.Dotnet.Services.Features.GetWeatherForecasts;
+namespace New.Dotnet.Services.Abstractions;
 
 public interface IGetWeatherForecastsService
 {
